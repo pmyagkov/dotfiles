@@ -1,0 +1,21 @@
+#!/bin/bash
+
+chlog=$(findup ChangeLog)
+
+if [[ $? -ne 0 ]]; then
+    echo 'ChangeLog not found'
+    exit 1
+fi
+
+if [[ $1 ]] && [[ $1 == -i ]]; then
+    package=$(head -n 1 "$chlog" | sed -E 's#^(.*)[0-9]+\.[0-9]+\.[0-9]+.*$#\1#')
+    major=$(head -n 1 "$chlog" | sed -E 's#^.*([0-9]+\.[0-9]+\.)[0-9]+.*$#\1#')
+    minor_inc=$(( `head -n 1 "$chlog" | sed -E 's#^.*[0-9]+\.[0-9]+\.([0-9]+).*$#\1#'` + 1 ))
+    printf "%s" "Будет в **$package$major$minor_inc)**" | pbcopy
+    echo "$package$major$minor_inc)"
+else
+    version=$(head -n 1 "$chlog" | sed -E 's#^.*([0-9]+\.[0-9]+\.[0-9]+).*$#\1#')
+    printf "%s" "$version" | pbcopy
+    echo $version
+fi
+

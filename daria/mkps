@@ -1,0 +1,23 @@
+#!/bin/bash
+
+PROJECTS='promo'
+#PROJECTS='boot jane mail disk promo'
+
+tmp=$(daria_repo) && cd "$tmp/promo-themes/static"
+
+if [ $1 ]; then
+    if [ $1 == 'cl' ]; then
+        make clean
+        exit 0
+    elif [ $1 == 'all' ]; then
+        make PROJECTS="$PROJECTS"
+        exit 0
+    fi
+fi
+
+if [ $1 ]; then
+    make PROJECTS="$PROJECTS" THEMES="$1 $2 $3 $4 $5 $6 $7"
+else
+    make PROJECTS="$PROJECTS" THEMES='colorful'
+fi
+

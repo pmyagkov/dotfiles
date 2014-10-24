@@ -1,0 +1,129 @@
+#!/usr/bin/perl -w
+
+use strict;
+use open ':utf8';
+use Encode qw/decode_utf8 encode_utf8/;
+use Getopt::Long;
+use File::Copy;
+
+my $log = "ChangeLog";
+my $log_tmp;
+my $tmpchk = 0;
+my $increment = 0;
+
+Getopt::Long::Configure('bundling');
+GetOptions("i|increment" => \$increment,
+        "c|changelog=s" => \$log);
+
+$log_tmp = "$log.tmp";
+
+my ($name, $email, %env);
+check_env_utf8('EMAIL');
+check_env_utf8('DEBFULLNAME');
+check_env_utf8('DEBEMAIL');
+check_env_utf8('USER');
+
+if (exists $env{'EMAIL'} and $env{'EMAIL'} =~ /^(.*)\s+<(.*)>$/) {
+    $name = $1;
+    $email = $2;
+} elsif (exists $env{'DEBEMAIL'} and $env{'DEBEMAIL'} =~ /^(.*)\s+<(.*)>$/) {
+    if (exists $env{'DEBFULLNAME'}) {
+        $name = $env{'DEBFULLNAME'};
+    } else {
+        $name = $1 ;
+    }
+    $email = $2;
+} elsif (exists $env{'DEBEMAIL'} and exists $env{'DEBFULLNAME'}) {
+    $name = $env{'DEBFULLNAME'};
+    $email = $env{'DEBEMAIL'};
+} else {
+    $name = $env{'USER'};
+    $email = $env{'USER'} . '@yandex-team.ru';
+}
+
+$ENV{'DEBFULLNAME'} = $name;
+$ENV{'DEBEMAIL'} = $email;
+
+my ($head, $body, $lastmult, $lastmaint, $line);
+$body = '';
+$line = 2;
+
+
+open C, $log;
+while(<C>) {
+    if (/^\w/) {
+        $head = $_ . <C>;
+        next;
+    } elsif (/^ --/) {
+        $_ =~ m/^ -- (.+) </;
+        $lastmaint = $1;
+        chomp($body);
+        last;
+    } elsif (/^  \[/) {
+        $_ =~ m/^  \[\s+(.+)\s+\]/;
+        $lastmult = $1;
+    } elsif (/^\S/) {
+        print;
+        die('Bad line');
+    }
+    $line++;
+    $body .= $_;
+}
+
+if ($increment) {
+    seek(C, 0, 0);
+    $head =~ s/(\d+)(?=\))/$1+1/e;
+    $body = "";
+    $line = 3;
+} else {
+    if (!$lastmult and $lastmaint eq $name) {
+    } elsif (!$lastmult) {
+        $body = "  [ $lastmaint ]\n" . $body . "\n  [ $name ]\n";
+        $line += 3;
+    } elsif ($lastmult eq $name) {
+    } else {
+        $body .= "\n  [ $name ]\n";
+        $line += 2;
+    }
+}
+
+{
+    open O, ">$log_tmp" or die("Can't open temporary file");
+    $tmpchk = 1;
+    chomp(my $DATE = `date -R`);
+    print O $head, $body, "  * \n\n -- $name <$email>  $DATE\n";
+    print O "\n" if $increment;
+    local $/ = undef;
+    print O <C>;
+    close O;
+}
+close C;
+
+my $mtime = (stat($log_tmp))[9];
+system("vim +$line $log_tmp -c 'set ft=debchangelog'");
+my $new_mtime = (stat($log_tmp))[9];
+if ($mtime == $new_mtime) {
+    warn "No changes\n";
+    exit 0;
+}
+copy ($log_tmp, $log) or die("Couldn't replace '$log' with new version: $!");
+
+
+sub check_env_utf8 {
+    my $envvar = $_[0];
+
+    if (exists $ENV{$envvar} and $ENV{$envvar} ne '') {
+        if (! decode_utf8($ENV{$envvar})) {
+            warn "Warning: environment variable $envvar not UTF-8 encoded; ignoring\n";
+        } else {
+            $env{$envvar} = decode_utf8($ENV{$envvar});
+        }
+    }
+}
+
+END {
+    if ($tmpchk) {
+        unlink $log_tmp;
+        unlink "$log_tmp~";
+    }
+}

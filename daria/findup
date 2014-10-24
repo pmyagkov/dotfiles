@@ -1,0 +1,11 @@
+#!/bin/bash
+
+i=0
+while [ 1 ]; do
+    i=$(( $i + 1 ))
+    [ $(ls "$1" 2> /dev/null | wc -l) -gt 0 ] && echo "$(pwd)/$1" && exit 0
+    [[ $(pwd) == 8 ]] && exit 1
+    [[ $i -eq 100 ]] && exit 1
+    cd ..
+done
+

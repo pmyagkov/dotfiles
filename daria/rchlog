@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git log --first-parent --format=tformat:' * %s (%an)' --since="`fgrep -m 1 ' -- ' ChangeLog | awk -F '>' '{print($2)}' | xargs --null date -d`"
+

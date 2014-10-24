@@ -1,0 +1,5 @@
+#!/bin/bash
+
+clink2 | pbcopy
+git log $COMMIT_PTR -1 --pretty='%s (%an)'
+clink2

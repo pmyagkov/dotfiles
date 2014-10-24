@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ "$#" -ne "2" ]; then
+   echo "Usage: $0 <string_to_find> <date>" >&2
+   exit 1
+fi
+
+STR=$1
+DATE=$2
+echo $STR
+echo $DATE
+
+executer -c "p_exec %mail_logstore find /u0/archive_logs/web -name nginx_mail_access.log.$DATE.gz | xargs -n 1 -P 10 -I {} sh -c \"zcat {} | fgrep '$STR' ; echo '$STR'\""
