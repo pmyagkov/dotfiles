@@ -58,7 +58,7 @@ source ${MY_ZSH_ETC}/prompt.zsh
 
 # User configuration
 
-export PATH=/usr/local/bin/:/usr/local/:/usr/local/sbin/:/usr/local/share/npm/bin:$HOME/bin:$HOME/node_modules/.bin:/usr/local/opt/ruby/bin:$PATH
+export PATH=/usr/local/bin/:/usr/local/:/usr/local/sbin/:/usr/local/share/npm/bin:$HOME/etc/daria:$HOME/bin:$HOME/node_modules/.bin:/usr/local/opt/ruby/bin:$PATH
 export NODE_PATH='/usr/local/lib/node_modules'
 export EDITOR="vim"
 
