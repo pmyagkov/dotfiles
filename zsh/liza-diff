@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if [ "$1" = "-c" ]; then
+    git diff origin/liza-master origin/master -- ${*:2} | git apply
+    git add ${*:2} && git commit -nm"${*:2}"
+elif [ "$1" = "-m" ]; then
+    meld "/Users/viking/Projects/daria/dev/mail/$2" "/Users/viking/Projects/daria/dev2/mail/$2" $3
+else
+    git diff origin/liza-master origin/master -- $@ 
+fi
+

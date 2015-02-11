@@ -1,12 +1,11 @@
 #!/bin/zsh
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="random"
+ZSH_THEME="viking"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -58,9 +57,11 @@ source ${MY_ZSH_ETC}/prompt.zsh
 
 # User configuration
 
-export PATH=/usr/local/bin/:/usr/local/:/usr/local/sbin/:/usr/local/share/npm/bin:$HOME/etc/daria:$HOME/bin:$HOME/node_modules/.bin:/usr/local/opt/ruby/bin:$PATH
+export PATH=/usr/local/bin/:/usr/local/:/usr/local/sbin/:/usr/local/share/npm/bin:$HOME/etc/daria:$HOME/etc/zsh:$HOME/bin:$HOME/node_modules/.bin:/usr/local/opt/ruby/bin:$PATH
 export NODE_PATH='/usr/local/lib/node_modules'
 export EDITOR="vim"
+export PYTHONPATH="/Library/Python/2.7/site-packages"
+export PYTHONENCODING="UTF-8"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

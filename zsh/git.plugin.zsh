@@ -15,6 +15,7 @@ function g {
 
 alias gg='git add ChangeLog && git commit -nm "build" && git push --no-verify'
 
+alias gf='git fetch'
 alias gs='git stash'
 alias gsp='git stash pop'
 alias gm='git merge'
@@ -23,7 +24,7 @@ alias grh='git reset --hard'
 alias gsm='git submodule'
 alias gsmu='git submodule update'
 alias gb='git branch'
-
+alias glb='git log --pretty="  * %s (%an)"'
 alias gd='git diff'
 compdef _git gd=git-diff
 alias gdc='git diff --cached'
@@ -36,6 +37,7 @@ alias gup='git pull --rebase'
 compdef _git gup=git-fetch
 alias gp='git push'
 compdef _git gp=git-push
+alias gpn='git push --no-verify'
 alias gd='git diff'
 gdv() { git diff -w "$@" | view - }
 compdef _git gdv=git-diff
@@ -65,7 +67,11 @@ alias grset='git remote set-url'
 compdef _git grset=git-remote
 alias grup='git remote update'
 compdef _git grset=git-remote
+alias grb='git rebase'
+compdef _git grb=git-rebase
 alias grbi='git rebase -i'
+compdef _git grbi=git-rebase
+alias grbs='git rebase --skip'
 compdef _git grbi=git-rebase
 alias grbc='git rebase --continue'
 compdef _git grbc=git-rebase
@@ -122,7 +128,7 @@ alias gpoat='git push origin --all && git push origin --tags'
 alias gmt='git mergetool --no-prompt'
 compdef _git gm=git-mergetool
 
-alias gg='git gui citool'
+#alias gg='git gui citool'
 alias gga='git gui citool --amend'
 alias gk='gitk --all --branches'
 

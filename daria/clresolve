@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sed -i .bak '/^<<<<<</d;/^>>>>>>/d;s/^=======//' ChangeLog && git add ChangeLog && git diff --cached ChangeLog && git status && rm ChangeLog.bak
+
