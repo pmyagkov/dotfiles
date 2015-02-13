@@ -47,12 +47,19 @@ export UPDATE_ZSH_DAYS=13
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+
 source ${ZSH}/oh-my-zsh.sh
 
-MY_ZSH_ETC=~/etc/zsh/
+MY_ZSH_ETC=~/etc/zsh
 
 source ${MY_ZSH_ETC}/aliases.zsh
 source ${MY_ZSH_ETC}/prompt.zsh
+
+source ${MY_ZSH_ETC}/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 
 # User configuration
@@ -87,5 +94,5 @@ export PYTHONENCODING="UTF-8"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
