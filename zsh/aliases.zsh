@@ -11,7 +11,7 @@ alias cdn='tmp=$(daria_repo) && cd ""$tmp/neo2""'
 alias cds='tmp=$(daria_repo) && cd ""$tmp/neo2/static""'
 
 # editors
-alias ws='nohup /Applications/WebStorm.app/Contents/MacOS/webide `pwd` > /dev/null & '
+alias ws='nohup /Applications/WebStorm.app/Contents/MacOS/webstorm `pwd` > /dev/null & '
 
 # Unix
 if [[ $PLATFORM == 'Linux' ]]; then
