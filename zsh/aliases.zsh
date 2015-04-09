@@ -27,7 +27,8 @@ fi
 # ssh
 alias ssh='ssh -A'
 alias daria2='ssh -A daria2.yandex.ru'
-alias mailfront2='ssh -A mailfront2.yandex.ru'
+alias mf2='ssh -A mailfront2.yandex.ru'
+alias mf2yt='ssh -A mailfront2.yandex-team.ru'
 alias deardeer='ssh root@80.240.130.184'
 
 # my own scripts
