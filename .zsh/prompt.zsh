@@ -9,6 +9,8 @@ function __prompt_git_status {
     local c_staged=41
     local c_changed=39
     local c_untracked=160
+    local c_ahead=192
+    local c_behind=203
 
 
     local cur_dir=$PWD
@@ -31,8 +33,8 @@ function __prompt_git_status {
                 git_status="%F{$c_branch}$git_branch%f"
                 if [[ "$git_ahead" -ne "0" ]] || [[ "$git_behind" -ne "0" ]]; then
                     git_status="$git_status"
-                    [ "$git_behind" -ne "0" ] && git_status="$git_status%f↓$git_behind"
-                    [ "$git_ahead" -ne "0" ]  && git_status="$git_status%f↑$git_ahead"
+                    [ "$git_behind" -ne "0" ] && git_status="$git_status %F{$c_behind}↓$git_behind%f"
+                    [ "$git_ahead" -ne "0" ]  && git_status="$git_status %F{$c_ahead}↑$git_ahead%f"
                 fi
                 if [[ "$git_conflicts" -eq "0" ]] && [ "$git_staged" -eq "0" ] && [ "$git_changed" -eq "0" ] && [ "$git_untracked" -eq "0" ]; then
                     git_status="$git_status"
