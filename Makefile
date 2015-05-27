@@ -1,7 +1,6 @@
 links:
 	ln -s `pwd`/.zshrc ~/.zshrc
 	ln -s `pwd`/.bash_profile ~/.bash_profile
-	ln -s `pwd`/.zsh/viking.zsh-theme ~/.oh-my-zsh/themes/viking.zsh-theme
 	rm ~/.oh-my-zsh/plugins/git/git.plugin.zsh && ln -s `pwd`/.zsh/git.plugin.zsh ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 	ln -s `pwd`/.bin ~/.bin
 
