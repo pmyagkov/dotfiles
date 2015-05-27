@@ -13,10 +13,10 @@ function g {
     fi
 }
 
-alias gg='git add ChangeLog && git commit -nm "build" && git push --no-verify'
-
 alias gf='git fetch'
+compdef _git gf=git-fetch
 alias gs='git stash'
+compdef _git gs=git-stash
 alias gsp='git stash pop'
 alias gm='git merge'
 alias gr='git reset'

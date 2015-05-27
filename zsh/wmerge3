@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-if [ "$#" -eq 2 ]; then
-    /Applications/WebStorm.app/Contents/MacOS/webide merge "/Users/viking/Projects/daria/dev2/mail/$1" "/Users/viking/Projects/daria/dev/mail/$1" "/Users/viking/Projects/liza/dev/mail/modules/$2/$1"
-fi
-if [ "$#" -eq 3 ]; then
-    /Applications/WebStorm.app/Contents/MacOS/webide merge "/Users/viking/Projects/daria/dev2/mail/$1" "/Users/viking/Projects/daria/dev/mail/$1" "/Users/viking/Projects/liza/dev/mail/modules/$2/$3"
-fi
-

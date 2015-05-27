@@ -1,4 +1,7 @@
 #!/bin/sh
+
+if [ -x ~/bin/zsh ]; then exec ~/bin/zsh; fi
+
 export PATH=/usr/local/bin/:/usr/local/:/usr/local/sbin/:/usr/local/share/npm/bin:$HOME/bin:$HOME/node_modules/.bin:/usr/local/opt/ruby/bin:$PATH
 export NODE_PATH='/usr/local/lib/node_modules'
 export EDITOR="vim"
@@ -31,8 +34,6 @@ else
 fi
 # ssh
 alias ssh='ssh -A'
-alias daria2='ssh -A daria2.yandex.ru'
-alias mailfront='ssh -A mailfront.yandex.ru'
 alias deardeer='ssh root@80.240.130.184'
 
 # my own scripts

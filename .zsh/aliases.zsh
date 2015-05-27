@@ -6,9 +6,6 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
-alias cdm='tmp=$(daria_repo) && cd ""$tmp/mail""'
-alias cdn='tmp=$(daria_repo) && cd ""$tmp/neo2""'
-alias cds='tmp=$(daria_repo) && cd ""$tmp/neo2/static""'
 
 # editors
 alias ws='nohup /Applications/WebStorm.app/Contents/MacOS/webstorm `pwd` > /dev/null & '
@@ -24,12 +21,11 @@ else
     alias lla='ls -lAh'
     alias l='ls -1'
 fi
+
 # ssh
 alias ssh='ssh -A'
-alias daria2='ssh -A daria2.yandex.ru'
-alias mf2='ssh -A mailfront2.yandex.ru'
-alias mf2yt='ssh -A mailfront2.yandex-team.ru'
-alias deardeer='ssh root@80.240.130.184'
+alias deardeer='ssh -A root@80.240.130.184'
+alias win105='ssh -A p.myagkov@win105.dev.mail.ru'
 
 # my own scripts
 alias nver='ver -i'
@@ -50,4 +46,5 @@ alias kt='npm run-script karma-test'
 alias kw='npm run-script karma-watch'
 
 # bash/zsh
-alias supdate='source ~/.zshrc'
+alias supdate='source ${DOTS_HOME}.zshrc'
+alias zshconfig="vim ${DOTS_HOME}/.zshrc"

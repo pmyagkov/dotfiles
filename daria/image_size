@@ -1,6 +1,0 @@
-#!/bin/bash
-
-width=$(sips -g pixelWidth $1 | tail -n1 | cut -d" " -f4)
-height=$(sips -g pixelHeight $1 | tail -n1 | cut -d" " -f4)
-
-printf "%s: %sx%s\n" "$1" "$width" "$height"

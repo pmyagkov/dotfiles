@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-echo "Filename:" $1
-if [ $1 = "-m" ]; then
-    meld "/Users/viking/Projects/daria/dev/mail/$2" "/Users/viking/Projects/daria/dev2/mail/$2" $3
-else
-    /Applications/WebStorm.app/Contents/MacOS/webide diff "/Users/viking/Projects/daria/dev/mail/$1" "/Users/viking/Projects/daria/dev2/mail/$1"
-fi
