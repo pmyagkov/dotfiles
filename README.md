@@ -24,5 +24,5 @@ chsh -s /bin/zsh
 
 Делаем скрипты исполняемыми
 ```
-chmod -x ~/Projects/.bin/*
+chmod +x ~/Projects/.bin/*
 ```
