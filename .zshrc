@@ -37,6 +37,7 @@ export DOTS_HOME=~/Projects/dotfiles/
 export ZDOTS_HOME=${DOTS_HOME}/.zsh
 export PROJECT_HOME=~/Projects/
 export WORKON_HOME=~/Projects/.venv/
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 export NODE_PATH='/usr/local/lib/node_modules'
 export EDITOR="vim"
