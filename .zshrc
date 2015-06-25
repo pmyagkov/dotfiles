@@ -58,4 +58,6 @@ source ${ZSH}/oh-my-zsh.sh
 source ${ZDOTS_HOME}/aliases.zsh      # aliases for commands
 source ${ZDOTS_HOME}/prompt.zsh       # prompt definition
 
+[ -f /usr/local/include/php/arcanist/resources/shell/bash-completion ] && source /usr/local/include/php/arcanist/resources/shell/bash-completion
+
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh   #launch virtual env wrapper
