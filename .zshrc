@@ -57,6 +57,7 @@ source ${ZSH}/oh-my-zsh.sh
 
 source ${ZDOTS_HOME}/aliases.zsh      # aliases for commands
 source ${ZDOTS_HOME}/prompt.zsh       # prompt definition
+source ${ZDOTS_HOME}/tmuxinator.zsh   # completion for tmuxinator
 
 [ -f /usr/local/include/php/arcanist/resources/shell/bash-completion ] && source /usr/local/include/php/arcanist/resources/shell/bash-completion
 
