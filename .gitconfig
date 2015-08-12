@@ -3,10 +3,14 @@
 
 [push]
 	default = simple
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
 
 [format]
 	date = short
-	pretty = format:%C(227)%h %C(103)%ar%Creset%C(41)%d%Creset %C(87)%s %C(203)[%an]%Creset
+	pretty = format:%C(227)%h %C(103)%ar%Creset%d%Creset %C(87)%s %C(203)[%an]%Creset
 
 [alias]
 	l = log
