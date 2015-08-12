@@ -9,12 +9,14 @@ alias .5='cd ../../../../../'
 
 # editors
 alias ws='nohup /Applications/WebStorm.app/Contents/MacOS/webstorm `pwd` > /dev/null & '
+# не работает
+# alias diff="nohup /Applications/WebStorm.app/Contents/MacOS/webstorm diff $@ > /dev/null & "
 
 # Unix
 if [[ $PLATFORM == 'Linux' ]]; then
     alias ll='ls -lh --color=auto'
     alias lla='ls -lAh --color=auto'
-    alias l='ls -1 --color=auto'
+    alias l='ls -la --color=auto'
 else
     alias ls='ls -G'
     alias ll='ls -lh'
@@ -26,6 +28,7 @@ fi
 alias ssh='ssh -A'
 alias deardeer='ssh -A root@80.240.130.184'
 alias win105='ssh -A p.myagkov@win105.dev.mail.ru'
+alias beta='ssh -A beta.cal.dev.mail.ru'
 
 # my own scripts
 alias nver='ver -i'
