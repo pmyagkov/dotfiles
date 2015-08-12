@@ -5,7 +5,7 @@
 #alias gst='git status'
 #compdef _git gst=git-status
 
-function g {
+g() {
     if [ $1 ]; then
         git $*
     else
