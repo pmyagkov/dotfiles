@@ -99,3 +99,4 @@ setopt prompt_subst
 
 export PROMPT=$'$(__build_prompt)'
 export RPROMPT=$'$(__build_rprompt)'
+

@@ -2,7 +2,7 @@
 	email = p.myagkov@corp.mail.ru
 
 [push]
-	default = simple
+	default = current
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -15,3 +15,5 @@
 [alias]
 	l = log
 	lg = log --graph
+[pull]
+	rebase = true

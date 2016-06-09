@@ -1,5 +1,13 @@
 #!/bin/zsh
 
+# Allow to delete word to the nearest /
+#a-tcsh-backward-delete-word () {
+#  local WORDCHARS="${WORDCHARS:s#/#}"
+#  zle backward-delete-word
+#}
+
+#bindkey '^W' a-tcsh-backward-delete-word 
+
 #== Commands cd & pushd =======================================================
 setopt AUTO_PUSHD               # this makes cd=pushd
 setopt PUSHD_TO_HOME            # blank pushd goes to home
@@ -42,16 +50,14 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export NODE_PATH='/usr/local/lib/node_modules'
 export EDITOR="vim"
 
+export GOPATH=$PROJECT_HOME/go
+
 [ -d ${HOME}/.bin ] && PATH=${HOME}/.bin:$PATH
 [ -d ${ZDOTS_HOME} ] && PATH=${ZDOTS_HOME}:$PATH
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
 [ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 [ -d /usr/local/share/npm/bin ] && PATH=/usr/local/share/npm/bin:$PATH
-
-export PATH
-
-
-
+[ -d $GOPATH/bin ] && PATH=$GOPATH/bin:$PATH
 
 source ${ZSH}/oh-my-zsh.sh
 
@@ -62,3 +68,5 @@ source ${ZDOTS_HOME}/tmuxinator.zsh   # completion for tmuxinator
 [ -f /usr/local/include/php/arcanist/resources/shell/bash-completion ] && source /usr/local/include/php/arcanist/resources/shell/bash-completion
 
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh   #launch virtual env wrapper
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
