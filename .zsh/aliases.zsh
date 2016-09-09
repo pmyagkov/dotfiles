@@ -61,3 +61,6 @@ alias d='docker'
 alias dm='docker-machine'
 alias va='vagrant'
 alias wo='workon'
+
+# build commands
+alias ez-start='NODE_ENV=development LEVEL=development babel-node webpack/run start'

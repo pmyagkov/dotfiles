@@ -12,6 +12,7 @@ g() {
         git status
     fi
 }
+compdef _git g=git
 
 alias gf='git fetch'
 compdef _git gf=git-fetch
@@ -20,7 +21,9 @@ compdef _git gs=git-stash
 alias gsp='git stash pop'
 alias gm='git merge'
 alias gr='git reset'
+compdef _git gr=git-reset
 alias grh='git reset --hard'
+compdef _git grh=git-reset
 alias gsm='git submodule'
 alias gsmu='git submodule update'
 alias gb='git branch'
@@ -35,7 +38,7 @@ alias gu='git pull'
 compdef _git gl=git-pull
 alias gup='git pull --rebase'
 compdef _git gup=git-fetch
-alias gp='git push'
+alias gp='git push -u'
 compdef _git gp=git-push
 alias gpn='git push --no-verify'
 alias gd='git diff'
@@ -55,18 +58,18 @@ compdef _git gcmsg=git-commit
 alias gco='git checkout'
 compdef _git gco=git-checkout
 alias gcm='git checkout master'
-alias gr='git remote'
-compdef _git gr=git-remote
-alias grv='git remote -v'
-compdef _git grv=git-remote
-alias grmv='git remote rename'
-compdef _git grmv=git-remote
-alias grrm='git remote remove'
-compdef _git grrm=git-remote
-alias grset='git remote set-url'
-compdef _git grset=git-remote
-alias grup='git remote update'
-compdef _git grset=git-remote
+#alias gr='git remote'
+#compdef _git gr=git-remote
+#alias grv='git remote -v'
+#compdef _git grv=git-remote
+#alias grmv='git remote rename'
+#compdef _git grmv=git-remote
+#alias grrm='git remote remove'
+#compdef _git grrm=git-remote
+#alias grset='git remote set-url'
+#compdef _git grset=git-remote
+#alias grup='git remote update'
+#compdef _git grset=git-remote
 alias grb='git rebase'
 compdef _git grb=git-rebase
 alias grbi='git rebase -i'

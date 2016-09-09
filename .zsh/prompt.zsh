@@ -3,14 +3,14 @@ function __prompt_git_status {
     local cur_dir git_status git_vars
     local git_branch git_staged git_conflicts git_changed git_untracked git_ahead git_behind
 
-	# git prompt elements colors
-	local c_branch=227
-    local c_conflicts=160
-    local c_staged=41
-    local c_changed=39
-    local c_untracked=160
-    local c_ahead=192
-    local c_behind=203
+    # git prompt elements colors
+    local c_branch='magenta'
+    local c_conflicts='red'
+    local c_staged='green'
+    local c_changed='blue'
+    local c_untracked='red'
+    local c_ahead='yellow'
+    local c_behind='magenta'
 
 
     local cur_dir=$PWD
@@ -54,11 +54,11 @@ function __prompt_git_status {
 function __build_prompt {
     local prompt_git
 
-    local c_default='white'
-    local c_hostname=103
-    local c_username=103
-    local c_dir=87
-    local c_arrow=87
+    local c_default='black'
+    local c_hostname=60
+    local c_username=60
+    local c_dir='blue'
+    local c_arrow='blue'
 
     # reset colors
     echo -n "%f%b%k%F{$c_default}"
@@ -72,7 +72,7 @@ function __build_prompt {
     [ ! -z "$prompt_git" ] && echo -n "%F{$c_default}on $prompt_git %f"
 
     # command arrow
-    echo -n "%E%f%k%F{$c_arrow}⌘ %F{$c_default%}%f "
+    echo -n "%E%f%k\n%F{$c_arrow}⌘ %F{$c_default%}%f "
 }
 
 
@@ -80,7 +80,7 @@ function __build_prompt {
 function __build_rprompt {
     local c_default='white'
 	# color of right prompt values
-    local c_value=87
+    local c_value='cyan'
 
 	# vitrualenv
     [ ! -z "$VIRTUAL_ENV" ] && echo -n "%F{$c_default}env:%f %F{c_value}${VIRTUAL_ENV#$WORKON_HOME}%f"

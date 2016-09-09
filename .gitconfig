@@ -3,6 +3,7 @@
 
 [push]
 	default = current
+
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -10,10 +11,53 @@
 
 [format]
 	date = short
-	pretty = format:%C(227)%h %C(103)%ar%Creset%d%Creset %C(87)%s %C(203)[%an]%Creset
+	pretty = format:%C(yellow)%h %C(cyan)%ad%Creset%d%Creset %C(blue)%s %C(red)[%an]%Creset
 
 [alias]
 	l = log
 	lg = log --graph
 [pull]
 	rebase = true
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+
+[mergetool]
+	prompt = false
+
+[merge]
+	tool = Kaleidoscope
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[difftool]
+	prompt = false
+
+[diff]
+	tool = Kaleidoscope
+
+[branch "master"]
+# This is the list of cmdline options that should be added to git-merge 
+# when I merge commits into the master branch.
+
+# The option --no-commit instructs git not to commit the merge
+# by default. This allows me to do some final adjustment to the commit log
+# message before it gets commited. I often use this to add extra info to
+# the merge message or rewrite my local branch names in the commit message
+# to branch names that are more understandable to the casual reader of the git log.
+
+# Option --no-ff instructs git to always record a merge commit, even if
+# the branch being merged into can be fast-forwarded. This is often the
+# case when you create a short-lived topic branch which tracks master, do
+# some changes on the topic branch and then merge the changes into the
+# master which remained unchanged while you were doing your work on the
+# topic branch. In this case the master branch can be fast-forwarded (that
+# is the tip of the master branch can be updated to point to the tip of
+# the topic branch) and this is what git does by default. With --no-ff
+# option set, git creates a real merge commit which records the fact that
+# another branch was merged. I find this easier to understand and read in
+# the log.
+
+	mergeoptions = --no-commit --no-ff
