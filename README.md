@@ -22,7 +22,12 @@ make links
 chsh -s /bin/zsh
 ```
 
+Устанавливаем tmuxinator
+```
+sudo gem install tmuxinator
+```
+
 Делаем скрипты исполняемыми
 ```
-chmod +x ~/Projects/.bin/*
+chmod +x ~/Projects/dotfiles/.bin/*
 ```
