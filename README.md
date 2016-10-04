@@ -31,3 +31,8 @@ sudo gem install tmuxinator
 ```
 chmod +x ~/Projects/dotfiles/.bin/*
 ```
+
+Настраиваем git
+```
+make git
+```
