@@ -78,6 +78,7 @@ source ${ZDOTS_HOME}/aliases.zsh      # aliases for commands
 source ${ZDOTS_HOME}/prompt.zsh       # prompt definition
 source ${ZDOTS_HOME}/tmuxinator.zsh   # completion for tmuxinator
 source ${ZDOTS_HOME}/tmux.plugin.zsh  # completion for tmux
+source ${ZDOTS_HOME}/command-line.zsh # plugins for command line
 
 eval "$(pyenv init -)"
 
