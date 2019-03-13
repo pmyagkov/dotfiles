@@ -22,6 +22,7 @@ rmzsh:
 	rm -rf ~/.oh-my-zsh
 
 git:
+	pip install git-up
 	git config --global core.excludesfile ~/.gitignore_global
 
 update-shell:
