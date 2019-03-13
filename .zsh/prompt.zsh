@@ -1,7 +1,7 @@
 # print git status for cwd (if we're in git repo)
 function __prompt_git_status {
     local cur_dir git_status git_vars
-    local git_branch git_staged git_conflicts git_changed git_untracked git_ahead git_behind
+    local git_branch git_staged git_conflicts git_changed git_untracked git_ahead git_behind git_commit
 
     # git prompt elements colors
     local c_branch='magenta'
@@ -11,6 +11,7 @@ function __prompt_git_status {
     local c_untracked='red'
     local c_ahead='yellow'
     local c_behind='magenta'
+    local c_commit='yellow'
 
 
     local cur_dir=$PWD
@@ -29,8 +30,13 @@ function __prompt_git_status {
                 git_conflicts=$git_vars[6]
                 git_ahead=$git_vars[7]
                 git_behind=$git_vars[8]
+                git_commit=$git_vars[9]
 
-                git_status="%F{$c_branch}$git_branch%f"
+                git_status="%F{$c_commit}#$git_commit%f"
+                if [[ -n "$git_branch" ]]; then
+                    git_status="%F{$c_branch}$git_branch $git_status"
+                fi
+
                 if [[ "$git_ahead" -ne "0" ]] || [[ "$git_behind" -ne "0" ]]; then
                     git_status="$git_status"
                     [ "$git_behind" -ne "0" ] && git_status="$git_status %F{$c_behind}↓$git_behind%f"
@@ -44,6 +50,7 @@ function __prompt_git_status {
                     [ "$git_changed" -ne "0" ]    && git_status="$git_status %F{$c_changed}*$git_changed%f"
                     [ "$git_untracked" -ne "0" ]  && git_status="$git_status %F{$c_untracked}…$git_untracked%f"
                 fi
+                
                 echo -ne $git_status
             fi
         fi

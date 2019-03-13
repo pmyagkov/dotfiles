@@ -32,9 +32,11 @@ def parse_git_branch(line):
     """
     branch = remote_branch = ''
     ahead = behind = 0
+    commit = git_commit()
+    detouched_head = False
 
     if line == 'HEAD (no branch)':  # detached state
-        branch = '#' + git_commit()
+        branch = ''
     elif '...' in line:  # ahead of or behind remote branch
         if ' ' in line:
             branches, ahead_behind = line.split(' ', 1)
@@ -52,7 +54,7 @@ def parse_git_branch(line):
     else:
         branch = line
 
-    return branch, remote_branch, ahead, behind
+    return branch, remote_branch, ahead, behind, commit
 
 
 def git_status():
@@ -64,13 +66,14 @@ def git_status():
 
     branch = remote_branch = ''
     staged = changed = untracked = unmerged = ahead = behind = 0
+    commit = ''
     for line in result.splitlines():
         line = line.decode('utf-8')
         prefix = line[0:2]
         line = line[3:]
 
         if prefix == '##':  # branch name + ahead & behind info
-            branch, remote_branch, ahead, behind = parse_git_branch(line)
+            branch, remote_branch, ahead, behind, commit = parse_git_branch(line)
         elif prefix == '??':  # untracked file
             untracked += 1
         elif prefix in ('DD', 'AU', 'UD', 'UA', 'DU', 'AA', 'UU'):  # unmerged
@@ -82,7 +85,7 @@ def git_status():
                 changed += 1
 
     return (branch, remote_branch, staged, changed, untracked, unmerged,
-            ahead, behind)
+            ahead, behind, commit)
 
 
 if __name__ == '__main__':

@@ -85,6 +85,9 @@ compdef _git gb=git-branch
 alias gba='git branch -a'
 compdef _git gba=git-branch
 alias gbr='git branch --remote'
+
+alias gbi='git branch | percol | xargs git checkout'
+
 alias gcount='git shortlog -sn'
 compdef gcount=git
 alias gcl='git config --list'

@@ -1,5 +1,5 @@
 [user]
-	email = p.myagkov@corp.mail.ru
+	email = p.a.myagkov@yandex.ru 
 
 [push]
 	default = current
@@ -16,6 +16,7 @@
 [alias]
 	l = log
 	lg = log --graph
+        pb = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
 [pull]
 	rebase = true
 
@@ -63,3 +64,12 @@
 	mergeoptions = --no-commit --no-ff
 [core]
 	excludesfile = /Users/puelle/.gitignore_global
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
