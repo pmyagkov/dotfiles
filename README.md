@@ -12,6 +12,11 @@ git clone git@github.com:pmyagkov/dotfiles.git ~/Projects/dotfiles
 make zsh
 ```
 
+Устанавливаем tmuxinator
+```
+make mux
+```
+
 Устанавливаем симлинки на конфиги
 ```
 make links
@@ -20,11 +25,6 @@ make links
 Меняем дефолтный шелл
 ```
 chsh -s /bin/zsh
-```
-
-Устанавливаем tmuxinator
-```
-sudo gem install tmuxinator
 ```
 
 Делаем скрипты исполняемыми

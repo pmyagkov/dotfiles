@@ -5,6 +5,7 @@ links:
 	rm ~/.oh-my-zsh/plugins/git/git.plugin.zsh && ln -s `pwd`/.zsh/git.plugin.zsh ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 	ln -s `pwd`/.bin ~/.bin
 	ln -s `pwd`/.gitignore_global ~/.gitignore_global
+	ln -s `pwd`/.tmuxinator ~/.tmuxinator
 
 rmlinks:
 	rm ~/.zshrc
@@ -20,6 +21,9 @@ zsh:
 
 rmzsh:
 	rm -rf ~/.oh-my-zsh
+
+mux:
+	sudo gem install tmuxinator
 
 git:
 	pip install git-up
