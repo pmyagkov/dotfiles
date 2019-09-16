@@ -4,15 +4,14 @@ function __prompt_git_status {
     local git_branch git_staged git_conflicts git_changed git_untracked git_ahead git_behind git_commit
 
     # git prompt elements colors
-    local c_branch='magenta'
+    local c_branch='cyan'
     local c_conflicts='red'
     local c_staged='green'
     local c_changed='blue'
     local c_untracked='red'
     local c_ahead='yellow'
-    local c_behind='magenta'
+    local c_behind='cyan'
     local c_commit='yellow'
-
 
     local cur_dir=$PWD
     while [[ ! -d "$cur_dir/.git" ]] && [[ ! "$cur_dir" == "/" ]] && [[ ! "$cur_dir" == "~" ]] && [[ ! "$cur_dir" == "" ]]; do cur_dir=${cur_dir%/*}; done

@@ -48,7 +48,7 @@ export PROJECT_HOME=~/Projects/
 export WORKON_HOME=~/Projects/.venv/
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-export NODE_PATH='/usr/local/lib/node_modules'
+# export NODE_PATH='/usr/local/lib/node_modules'
 export EDITOR="vim"
 
 [ ! -d ${HOME}/.bin ] && mkdir ${HOME}/.nvm
@@ -65,11 +65,12 @@ YARN_BIN="`yarn global bin`"
 [ -d /usr/local/share/npm/bin ] && PATH=/usr/local/share/npm/bin:$PATH
 [ -d $GOPATH/bin ] && PATH=$GOPATH/bin:$PATH
 [ -d $YARN_BIN ] && PATH=$YARN_BIN:$PATH
+[ -d ${HOME}/.fastlane/bin ] && PATH="${HOME}/.fastlane/bin:$PATH"
 
 export ANDROID_HOME=${HOME}/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools
 export PATH=$PATH:/Users/puelle/Library/Android/sdk/platform-tools/
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
 
 
 source ${ZSH}/oh-my-zsh.sh
@@ -148,3 +149,6 @@ fi
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [[ -f /Users/puelle/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/puelle/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+# added by travis gem
+[ -f /Users/puelle/.travis/travis.sh ] && source /Users/puelle/.travis/travis.sh
