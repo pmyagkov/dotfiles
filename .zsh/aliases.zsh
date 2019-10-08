@@ -24,8 +24,6 @@ fi
 # ssh
 alias ssh='ssh -A'
 alias deardeer='ssh -A root@80.240.130.184'
-alias win105='ssh -A p.myagkov@win105.dev.mail.ru'
-alias beta='ssh -A beta.cal.dev.mail.ru'
 alias allmyart='ssh -A allmyart@ssh.allmyart.nichost.ru'
 
 alias kid='node ~/Projects/slack-emoji/index.js'
