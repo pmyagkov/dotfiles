@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git history-substring-search.zsh)
+plugins=(git zsh-nvm)
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -58,6 +58,9 @@ source "$(brew --prefix nvm)/nvm.sh"
 export GOPATH=$PROJECT_HOME/go
 YARN_BIN="`yarn global bin`"
 
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+[ -d /usr/local/opt/python/libexec/bin ] && PATH=/usr/local/opt/python/libexec/bin:$PATH # python from brew
 [ -d ${HOME}/.bin ] && PATH=${HOME}/.bin:$PATH
 [ -d ${ZDOTS_HOME} ] && PATH=${ZDOTS_HOME}:$PATH
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH

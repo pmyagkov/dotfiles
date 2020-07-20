@@ -17,6 +17,7 @@ rmlinks:
 
 zsh:
 	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+	git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 	rm ~/.zshrc
 
 rmzsh:
