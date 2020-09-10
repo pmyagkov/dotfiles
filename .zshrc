@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git zsh-nvm)
+plugins=(git nvm)
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -51,12 +51,8 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # export NODE_PATH='/usr/local/lib/node_modules'
 export EDITOR="vim"
 
-[ ! -d ${HOME}/.bin ] && mkdir ${HOME}/.nvm
-export NVM_DIR="${HOME}/.nvm"
-source "$(brew --prefix nvm)/nvm.sh"
-
 export GOPATH=$PROJECT_HOME/go
-YARN_BIN="`yarn global bin`"
+# YARN_BIN="`yarn global bin`"
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
@@ -67,7 +63,7 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 [ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 [ -d /usr/local/share/npm/bin ] && PATH=/usr/local/share/npm/bin:$PATH
 [ -d $GOPATH/bin ] && PATH=$GOPATH/bin:$PATH
-[ -d $YARN_BIN ] && PATH=$YARN_BIN:$PATH
+# [ -d $YARN_BIN ] && PATH=$YARN_BIN:$PATH
 [ -d ${HOME}/.fastlane/bin ] && PATH="${HOME}/.fastlane/bin:$PATH"
 
 export ANDROID_HOME=${HOME}/Library/Android/sdk
@@ -84,7 +80,7 @@ source ${ZDOTS_HOME}/tmuxinator.zsh   # completion for tmuxinator
 source ${ZDOTS_HOME}/tmux.plugin.zsh  # completion for tmux
 source ${ZDOTS_HOME}/command-line.zsh # plugins for command line
 
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 
 [ -f /usr/local/include/php/arcanist/resources/shell/bash-completion ] && source /usr/local/include/php/arcanist/resources/shell/bash-completion
 
