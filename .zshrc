@@ -6,7 +6,7 @@
 #  zle backward-delete-word
 #}
 
-#bindkey '^W' a-tcsh-backward-delete-word 
+#bindkey '^W' a-tcsh-backward-delete-word
 
 #== Commands cd & pushd =======================================================
 setopt AUTO_PUSHD               # this makes cd=pushd
@@ -151,3 +151,8 @@ fi
 
 # added by travis gem
 [ -f /Users/puelle/.travis/travis.sh ] && source /Users/puelle/.travis/travis.sh
+
+if which rbenv > /dev/null;
+then
+  eval "$(rbenv init -)";
+fi
