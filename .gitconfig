@@ -1,5 +1,5 @@
 [user]
-	email = p.a.myagkov@yandex.ru 
+	email = myagkov@uchi.ru
 
 [push]
 	default = current
@@ -16,7 +16,7 @@
 [alias]
 	l = log
 	lg = log --graph
-        pb = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+	pb = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
 [pull]
 	rebase = true
 
@@ -40,7 +40,7 @@
 	tool = Kaleidoscope
 
 [branch "master"]
-# This is the list of cmdline options that should be added to git-merge 
+# This is the list of cmdline options that should be added to git-merge
 # when I merge commits into the master branch.
 
 # The option --no-commit instructs git not to commit the merge
@@ -69,7 +69,7 @@
 	driver = npx npm-merge-driver merge %A %O %B %P
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
