@@ -156,3 +156,12 @@ if which rbenv > /dev/null;
 then
   eval "$(rbenv init -)";
 fi
+
+unalias g
+g() {
+    if [ $1 ]; then
+        git $*
+    else
+        git status
+    fi
+}
