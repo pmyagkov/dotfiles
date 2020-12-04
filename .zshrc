@@ -158,6 +158,8 @@ then
 fi
 
 unalias g
+alias gbi='git branch | percol'
+alias gdc='git diff --cached'
 g() {
     if [ $1 ]; then
         git $*
