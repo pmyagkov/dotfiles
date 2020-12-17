@@ -158,8 +158,11 @@ then
 fi
 
 unalias g
-alias gbi='git branch | percol'
+alias gbi='git branch | percol | xargs git checkout'
 alias gdc='git diff --cached'
+unalias gp
+alias gp='git push -u'
+alias gs='git stash'
 g() {
     if [ $1 ]; then
         git $*
