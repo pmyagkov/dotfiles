@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git nvm)
+plugins=(git nvm docker-compose docker zsh-lerna)
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -170,3 +170,9 @@ g() {
         git status
     fi
 }
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/Users/puelle/yandex-cloud/path.bash.inc' ]; then source '/Users/puelle/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/Users/puelle/yandex-cloud/completion.zsh.inc' ]; then source '/Users/puelle/yandex-cloud/completion.zsh.inc'; fi
