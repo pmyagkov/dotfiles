@@ -32,7 +32,12 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git nvm docker-compose docker zsh-lerna)
+plugins=(
+  nvm 
+  docker-compose 
+  docker
+#  git не работает по какой-то причине
+)
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -81,6 +86,9 @@ source ${ZDOTS_HOME}/tmux.plugin.zsh  # completion for tmux
 source ${ZDOTS_HOME}/command-line.zsh # plugins for command line
 
 # eval "$(pyenv init -)"
+
+[ ! -f ${ZDOTS_HOME}/git.plugin.zsh ] && curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh > ${ZDOTS_HOME}/git.plugin.zsh
+source ${ZDOTS_HOME}/git.plugin.zsh
 
 [ -f /usr/local/include/php/arcanist/resources/shell/bash-completion ] && source /usr/local/include/php/arcanist/resources/shell/bash-completion
 
