@@ -60,6 +60,3 @@ alias l='lerna'
 whoislistening () {
   lsof -n -i4TCP:$1 | grep LISTEN
 }
-
-alias python=/usr/local/bin/python3
-alias pip=/usr/local/bin/pip3
