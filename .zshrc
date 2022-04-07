@@ -36,6 +36,7 @@ plugins=(
   nvm 
   docker-compose 
   docker
+#  tmux
 #  git не работает по какой-то причине
 )
 
@@ -61,11 +62,12 @@ export GOPATH=$PROJECT_HOME/go
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+[ -d /usr/local/bin ] && PATH=/Users/pmyagkov/Library/Python/3.8/bin:$PATH # python from systen
+[ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
+[ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 [ -d /usr/local/opt/python/libexec/bin ] && PATH=/usr/local/opt/python/libexec/bin:$PATH # python from brew
 [ -d ${HOME}/.bin ] && PATH=${HOME}/.bin:$PATH
 [ -d ${ZDOTS_HOME} ] && PATH=${ZDOTS_HOME}:$PATH
-[ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
-[ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 [ -d /usr/local/share/npm/bin ] && PATH=/usr/local/share/npm/bin:$PATH
 [ -d $GOPATH/bin ] && PATH=$GOPATH/bin:$PATH
 # [ -d $YARN_BIN ] && PATH=$YARN_BIN:$PATH
@@ -81,8 +83,8 @@ source ${ZSH}/oh-my-zsh.sh
 
 source ${ZDOTS_HOME}/aliases.zsh      # aliases for commands
 source ${ZDOTS_HOME}/prompt.zsh       # prompt definition
-source ${ZDOTS_HOME}/tmuxinator.zsh   # completion for tmuxinator
-source ${ZDOTS_HOME}/tmux.plugin.zsh  # completion for tmux
+# source ${ZDOTS_HOME}/tmuxinator.zsh   # completion for tmuxinator
+# source ${ZDOTS_HOME}/tmux.plugin.zsh  # completion for tmux
 source ${ZDOTS_HOME}/command-line.zsh # plugins for command line
 
 # eval "$(pyenv init -)"
@@ -184,3 +186,8 @@ if [ -f '/Users/puelle/yandex-cloud/path.bash.inc' ]; then source '/Users/puelle
 
 # The next line enables shell command completion for yc.
 if [ -f '/Users/puelle/yandex-cloud/completion.zsh.inc' ]; then source '/Users/puelle/yandex-cloud/completion.zsh.inc'; fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
