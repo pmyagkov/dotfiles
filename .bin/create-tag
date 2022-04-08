@@ -32,6 +32,7 @@ if [ ! -z $PREFIX ]; then
 fi
 
 echo "Creating tag: $TAG_NAME"
+git tag $TAG_NAME
 
 if [ -z $NO_PUSH ]; then
     git push origin $TAG_NAME
