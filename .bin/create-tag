@@ -1,6 +1,41 @@
 #!/bin/bash
 
-TAG_NAME="$(git rev-parse --abbrev-ref HEAD | sed 's/release-//')-$(git rev-parse HEAD | head -c 10)"
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -p|--prefix) PREFIX="$2"; shift ;;
+        -h|--help) HELP="true" ;;
+        -n|--no-push) NO_PUSH="true" ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
 
-git tag $TAG_NAME
-git push origin $TAG_NAME
+if [ ! -z $HELP ]; then
+    printf 'This command creates a tag based on your current branch name a current commit hash. \nThen push it to `origin` remote.\n\n'
+    printf 'Default format is the following: BRANCH_NAME-COMMIT_HASH and `release-` prefix is stripped out. \ni.e. for a branch `release-241-fixes` and commit hash `abcdef` you get a tag `241-fixes-abcdef`\n\n'
+    printf 'Possible options:\n'
+    printf '  -h|--help\n'
+    printf '      -- display this help menu\n'
+    printf '  -p|--prefix\n'
+    printf '      -- add a prefix to a tag separated by `-` for shaping tags like `wdp4-241-fixes-abcdef`\n'
+    printf '  -n|--no-push\n'
+    printf '      -- prevent push of the tag and the branch\n'
+
+    exit
+fi
+
+
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+TAG_NAME="$(echo $BRANCH_NAME | sed 's/release-//')-$(git rev-parse HEAD | head -c 10)"
+if [ ! -z $PREFIX ]; then
+    TAG_NAME="$PREFIX-$TAG_NAME"
+fi
+
+echo "Creating tag: $TAG_NAME"
+
+if [ -z $NO_PUSH ]; then
+    git push origin $TAG_NAME
+    git push origin $BRANCH_NAME
+else
+    echo "no push"
+fi
