@@ -42,8 +42,8 @@ alias ya='yarn'
 alias n='npm'
 
 # bash/zsh
-alias supdate="source ${DOTS_HOME}.zshrc"
-alias zshconfig="vim ${DOTS_HOME}.zshrc"
+alias supdate="source ${DOTS_HOME}/.zshrc"
+alias zshconfig="code ${DOTS_HOME}/.zshrc"
 
 # audio & video
 alias restart-audio="sudo killall coreaudiod"

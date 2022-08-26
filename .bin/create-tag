@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
@@ -24,7 +24,6 @@ if [ ! -z $HELP ]; then
     exit
 fi
 
-
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 TAG_NAME="$(echo $BRANCH_NAME | sed 's#/#-#')-$(git rev-parse HEAD | head -c 10)"
 if [ ! -z $PREFIX ]; then
@@ -38,5 +37,5 @@ if [ -z $NO_PUSH ]; then
     git push origin $TAG_NAME
     git push origin $BRANCH_NAME
 else
-    echo "no push"
+    echo "Didnt push neither branch nor tag due to '-n' option"
 fi

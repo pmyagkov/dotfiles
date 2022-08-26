@@ -33,8 +33,8 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
-  nvm 
-  docker-compose 
+  nvm
+  docker-compose
   docker
 #  tmux
 #  git не работает по какой-то причине
@@ -48,7 +48,7 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 # Global variables
-export DOTS_HOME=~/Projects/dotfiles/
+export DOTS_HOME=~/Projects/dotfiles
 export ZDOTS_HOME=${DOTS_HOME}/.zsh
 export PROJECT_HOME=~/Projects/
 export WORKON_HOME=~/Projects/.venv/
@@ -60,24 +60,35 @@ export EDITOR="vim"
 export GOPATH=$PROJECT_HOME/go
 # YARN_BIN="`yarn global bin`"
 
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-[ -d /usr/local/bin ] && PATH=/Users/pmyagkov/Library/Python/3.8/bin:$PATH # python from systen
-[ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
-[ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
-[ -d /usr/local/opt/python/libexec/bin ] && PATH=/usr/local/opt/python/libexec/bin:$PATH # python from brew
-[ -d ${HOME}/.bin ] && PATH=${HOME}/.bin:$PATH
-[ -d ${ZDOTS_HOME} ] && PATH=${ZDOTS_HOME}:$PATH
-[ -d /usr/local/share/npm/bin ] && PATH=/usr/local/share/npm/bin:$PATH
-[ -d $GOPATH/bin ] && PATH=$GOPATH/bin:$PATH
-# [ -d $YARN_BIN ] && PATH=$YARN_BIN:$PATH
-[ -d ${HOME}/.fastlane/bin ] && PATH="${HOME}/.fastlane/bin:$PATH"
 
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools
-export PATH=$PATH:/Users/puelle/Library/Android/sdk/platform-tools/
-export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
+add_dir_to_path()
+{
+  DIR=$1
+  PREPEND=$2
+  if [ ! -d ${DIR} ]; then
+    return
+  fi
 
+  if [[ ${PATH} =~ (^|:)"${DIR}"(:|$) ]]; then
+    return
+  fi
+
+  if [ $PREPEND = 1 ]; then
+    PATH=${DIR}:${PATH}
+  else
+    PATH=${PATH}:${DIR}
+  fi
+}
+
+add_dir_to_path "/usr/local/opt/python/libexec/bin" 1
+add_dir_to_path "/Users/pmyagkov/Library/Python/3.8/bin" 1
+add_dir_to_path "${HOME}/.bin" 1
+add_dir_to_path "/usr/local/bin" 1
+add_dir_to_path "/usr/local/sbin" 1
+add_dir_to_path "${ZDOTS_HOME}" 1
+add_dir_to_path "/usr/local/share/npm/bin" 1
+add_dir_to_path "$GOPATH/bin" 1
 
 source ${ZSH}/oh-my-zsh.sh
 
