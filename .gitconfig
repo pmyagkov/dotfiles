@@ -1,5 +1,5 @@
 [user]
-	email = pmyagkov@rutube.ru
+	email = p.a.myagkov@yandex.ru
 	name = Pasha Myagkov
 
 [push]
@@ -18,21 +18,15 @@
 	l = log
 	lg = log --graph
 	pb = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+
 [pull]
 	rebase = true
-
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustexitcode = true
 
 [mergetool]
 	prompt = false
 
 [merge]
 	tool = Kaleidoscope
-
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [difftool]
 	prompt = false
