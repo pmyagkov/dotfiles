@@ -49,7 +49,7 @@ function __prompt_git_status {
                     [ "$git_changed" -ne "0" ]    && git_status="$git_status %F{$c_changed}*$git_changed%f"
                     [ "$git_untracked" -ne "0" ]  && git_status="$git_status %F{$c_untracked}…$git_untracked%f"
                 fi
-                
+
                 echo -ne $git_status
             fi
         fi
@@ -103,6 +103,8 @@ function __build_rprompt {
 
 setopt prompt_subst
 
-export PROMPT=$'$(__build_prompt)'
-export RPROMPT=$'$(__build_rprompt)'
-
+python -V > /dev/null 2>&1
+if [[ $? = 0 ]]; then
+    export PROMPT=$'$(__build_prompt)'
+    export RPROMPT=$'$(__build_rprompt)'
+fi

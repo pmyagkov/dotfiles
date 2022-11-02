@@ -81,14 +81,17 @@ add_dir_to_path()
   fi
 }
 
-add_dir_to_path "/usr/local/opt/python/libexec/bin" 1
-add_dir_to_path "/Users/pmyagkov/Library/Python/3.8/bin" 1
 add_dir_to_path "${HOME}/.bin" 1
 add_dir_to_path "/usr/local/bin" 1
 add_dir_to_path "/usr/local/sbin" 1
 add_dir_to_path "${ZDOTS_HOME}" 1
 add_dir_to_path "/usr/local/share/npm/bin" 1
 add_dir_to_path "$GOPATH/bin" 1
+
+pyenv -h > /dev/null 2>/dev/null;
+if [[ $? = 0 ]]; then
+  eval "$(pyenv init -)"
+fi
 
 source ${ZSH}/oh-my-zsh.sh
 
@@ -97,8 +100,6 @@ source ${ZDOTS_HOME}/prompt.zsh       # prompt definition
 # source ${ZDOTS_HOME}/tmuxinator.zsh   # completion for tmuxinator
 # source ${ZDOTS_HOME}/tmux.plugin.zsh  # completion for tmux
 source ${ZDOTS_HOME}/command-line.zsh # plugins for command line
-
-# eval "$(pyenv init -)"
 
 [ ! -f ${ZDOTS_HOME}/git.plugin.zsh ] && curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh > ${ZDOTS_HOME}/git.plugin.zsh
 source ${ZDOTS_HOME}/git.plugin.zsh

@@ -1,3 +1,5 @@
+# make commands not fall when one of them has fallen
+
 links:
 	ln -s `pwd`/.zshrc ~/.zshrc
 	ln -s `pwd`/.bash_profile ~/.bash_profile
@@ -11,7 +13,6 @@ rmlinks:
 	rm ~/.zshrc
 	rm ~/.bash_profile
 	rm ~/.gitconfig
-	rm ~/.oh-my-zsh/themes/viking.zsh-theme
 	rm ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 	rm ~/.gitignore_global
 
@@ -26,13 +27,23 @@ rmzsh:
 mux:
 	sudo gem install tmuxinator
 
-git:
+git: python
 	pip install git-up
+	git config --global user.name "Pasha Myagkov"
+	git config --global user.email "p.a.myagkov@yandex.ru"
 	git config --global core.excludesfile ~/.gitignore_global
 
 update-shell:
 	supdate
 
-all: zsh links git update-shell
+brew:
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+python: brew
+	brew install pyenv
+	pyenv install 2.7.18
+	pyenv global 2.7.18
+
+all: brew zsh links git update-shell
 
 .PHONY: links,rmlinks,zsh,rmzsh,git,update-shell
