@@ -37,7 +37,7 @@ plugins=(
   docker-compose
   docker
 #  tmux
-#  git не работает по какой-то причине
+#  git
 )
 
 zmodload zsh/terminfo
@@ -81,14 +81,16 @@ add_dir_to_path()
   fi
 }
 
-add_dir_to_path "${HOME}/.bin" 1
+add_dir_to_path "${DOTS_HOME}/.bin" 1
 add_dir_to_path "/usr/local/bin" 1
 add_dir_to_path "/usr/local/sbin" 1
 add_dir_to_path "${ZDOTS_HOME}" 1
 add_dir_to_path "/usr/local/share/npm/bin" 1
 add_dir_to_path "$GOPATH/bin" 1
+add_dir_to_path "/opt/homebrew/opt/openjdk/bin" 1
 
-pyenv -h > /dev/null 2>/dev/null;
+
+pyenv -h > /dev/null 2>&1
 if [[ $? = 0 ]]; then
   eval "$(pyenv init -)"
 fi
@@ -200,6 +202,8 @@ if [ -f '/Users/puelle/yandex-cloud/path.bash.inc' ]; then source '/Users/puelle
 if [ -f '/Users/puelle/yandex-cloud/completion.zsh.inc' ]; then source '/Users/puelle/yandex-cloud/completion.zsh.inc'; fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+mkdir -p $HOME/.nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

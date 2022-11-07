@@ -39,11 +39,20 @@ update-shell:
 brew:
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+node: brew
+	brew install nvm
+
 python: brew
 	brew install pyenv
 	pyenv install 2.7.18
 	pyenv global 2.7.18
 
-all: brew zsh links git update-shell
+clojure:
+	# brew install openjdk
+	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > "$(shell pwd)/.bin/lein"
+	chmod a+x "$(shell pwd)/.bin/lein"
+	lein
+
+all: python node zsh links git update-shell
 
 .PHONY: links,rmlinks,zsh,rmzsh,git,update-shell
