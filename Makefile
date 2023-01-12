@@ -48,10 +48,11 @@ python: brew
 	pyenv global 2.7.18
 
 clojure:
-	# brew install openjdk
+	brew install openjdk
 	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > "$(shell pwd)/.bin/lein"
 	chmod a+x "$(shell pwd)/.bin/lein"
 	lein
+
 
 all: python node zsh links git update-shell
 

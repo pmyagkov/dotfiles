@@ -82,17 +82,19 @@ add_dir_to_path()
 }
 
 add_dir_to_path "${DOTS_HOME}/.bin" 1
-add_dir_to_path "/usr/local/bin" 1
-add_dir_to_path "/usr/local/sbin" 1
+add_dir_to_path "/usr/local/bin" 0
+add_dir_to_path "/usr/local/sbin" 0
 add_dir_to_path "${ZDOTS_HOME}" 1
 add_dir_to_path "/usr/local/share/npm/bin" 1
 add_dir_to_path "$GOPATH/bin" 1
 add_dir_to_path "/opt/homebrew/opt/openjdk/bin" 1
 
+export PYENV_ROOT="$HOME/.pyenv"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
-pyenv -h > /dev/null 2>&1
+/opt/homebrew/bin/pyenv -h > /dev/null
 if [[ $? = 0 ]]; then
-  eval "$(pyenv init -)"
+  eval "$(/opt/homebrew/bin/pyenv init -)"
 fi
 
 source ${ZSH}/oh-my-zsh.sh
